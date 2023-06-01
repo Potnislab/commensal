@@ -15,7 +15,7 @@ Michelle M. Pena<sup>*$1</sup>, Rishi Bhandari<sup>*1</sup>, Robert M. Bowers<su
 
 <sup>#</sup>Corresponding author: Neha Potnis, nzp0024@auburn.edu
 
-# <sup>*</sup>Michelle M. Pena and Rishi Bhandari contributed equally to this manuscript.
+#### <sup>*</sup>Michelle M. Pena and Rishi Bhandari contributed equally to this manuscript.
 
 
 
