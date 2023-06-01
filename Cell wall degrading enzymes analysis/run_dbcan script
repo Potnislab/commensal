@@ -1,0 +1,77 @@
+#First install dbcan with conda install
+
+conda create -n run_dbcan python=3.8 diamond hmmer prodigal -c conda-forge -c bioconda
+
+source activate run_dbcan
+
+#Database Installation (Create the database folder)
+
+test -d db || mkdir db
+
+#Then run the following command to download database one by one
+
+wget http://bcb.unl.edu/dbCAN2/download/CAZyDB.09242021.fa && diamond makedb --in CAZyDB.09242021.fa -d CAZy \
+
+&& wget https://bcb.unl.edu/dbCAN2/download/Databases/V10/dbCAN-HMMdb-V10.txt && mv dbCAN-HMMdb-V10.txt dbCAN.txt && hmmpress dbCAN.txt \
+
+&& wget http://bcb.unl.edu/dbCAN2/download/Databases/tcdb.fa && diamond makedb --in tcdb.fa -d tcdb \
+
+&& wget http://bcb.unl.edu/dbCAN2/download/Databases/tf-1.hmm && hmmpress tf-1.hmm \
+
+&& wget http://bcb.unl.edu/dbCAN2/download/Databases/tf-2.hmm && hmmpress tf-2.hmm \
+
+&& wget http://bcb.unl.edu/dbCAN2/download/Databases/stp.hmm && hmmpress stp.hmm \
+
+&& cd ../ && wget http://bcb.unl.edu/dbCAN2/download/Samples/EscheriaColiK12MG1655.fna \
+
+&& wget http://bcb.unl.edu/dbCAN2/download/Samples/EscheriaColiK12MG1655.faa \
+
+&& wget http://bcb.unl.edu/dbCAN2/download/Samples/EscheriaColiK12MG1655.gff
+
+#Dbcan needs protein files to run, so get the faa files in one folder and rin the following code to run the dbcan.py
+
+for file in *.faa; do tag=${file%.faa};
+
+run_dbcan *.faa protein --out_dir "$tag"_output
+
+#Once we have the output we will use the following code to get the cazymes hits based on all three programs and make a new files with counts
+
+#!/bin/sh
+
+source /opt/asn/etc/asn-bash-profiles-special/modules.sh
+
+ls *.faa | sed 's/.faa//g' > file_list.txt
+
+files=`cat file_list.txt`
+
+for var in $files
+
+do
+
+echo $var
+
+awk '($5 >= 3) {print $1 "\t" $4}' ${var}_output/overview.txt
+
+awk -F "_" '{print $1 $2}' ${var}_output/overview.txt
+
+awk -F "\t" '{count[$2]++} END {for (word in count) print word "\t" count[word]}' ${var}_output/overview.txt > output/${var}_count.txt
+
+sed -i 's/^/'${var}' /g' output/${var}_count.txt
+
+sed -i '1i 'Genome' 'Cazymes_family' 'Count'' output/${var}_count.txt
+
+sed -i 's/ /\t/g' output/${var}_count.txt
+
+done
+
+#Finally to combine all the count files into one single file we will use a GNU datamash + crosstab https://www.gnu.org/software/datamash
+
+conda install -c bioconda/label/cf201901 datamash
+
+Source activate datamash
+
+#make sure you have all the count files in one folder to perform this operation
+
+sed -s 1d *.txt | datamash crosstab 1,2 sum 3 --filler 0 >final.txt
+
+Use the final.txt file to visualize the data
