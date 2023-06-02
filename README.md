@@ -1,4 +1,4 @@
-# Comparative genomics and association analysis to identify genetic attributes associated with bacterial lifestyle
+## Comparative genomics and association analysis to identify genetic attributes associated with bacterial lifestyle
 
 This repository provides supporting information and the codes for the following manuscript.
 
@@ -28,7 +28,7 @@ The genus *Xanthomonas* has been primarily studied for pathogenic interactions w
 
 ## Data Availability
 
-Sequence data generated from this work have been deposited in the DOE JGI and GenBank database under the JGI taxon id and Bioproject accession number as given in data infromation table.
+Sequence data generated from this work have been deposited in the DOE JGI and GenBank database under the JGI taxon id and Bioproject accession number as given in metadata table.
 
 
 ## Funding
