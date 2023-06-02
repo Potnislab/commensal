@@ -28,7 +28,7 @@ The genus *Xanthomonas* has been primarily studied for pathogenic interactions w
 
 ## Data Availability
 
-Sequence data generated from this work have been deposited in the DOE JGI and GenBank database under the JGI taxon id and Bioproject accession number as given in metadata table.
+Sequence data generated from this work have been deposited in the DOE JGI and GenBank database under the JGI taxon id and Bioproject accession number as given in the metadata table.
 
 
 ## Funding
