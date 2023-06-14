@@ -1,6 +1,6 @@
 ## Comparative genomics and association analysis to identify genetic attributes associated with bacterial lifestyle
 
-This repository provides supporting information and the codes for the following manuscript.
+This repository provides supporting information and the codes for the following manuscript available as preprint in bioRXiv (doi: https://doi.org/10.1101/2023.05.31.543148) and is under peer review. 
 
 ### Genetic and functional diversity help explain pathogenic, weakly pathogenic, and commensal lifestyles in the genus *Xanthomonas*
 Michelle M. Pena<sup>*$1</sup>, Rishi Bhandari<sup>*1</sup>, Robert M. Bowers<sup>5</sup>, Kylie Weis<sup>1</sup>, Eric Newberry<sup>1</sup>, Naama Wagner<sup>2</sup>, Tal Pupko<sup>2</sup>, Jeffrey B. Jones<sup>4</sup>, Tanja Woyke<sup>5,6</sup>, Boris A. Vinatzer<sup>3</sup>, Marie- Agnès Jacques<sup>7</sup>, Neha Potnis<sup>1#</sup>
